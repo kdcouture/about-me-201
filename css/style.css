@@ -1,0 +1,19 @@
+* {
+  background-color: black;
+}
+p {
+  color: lightcyan;
+  background-color: darkblue;
+  border: yellow 5px solid;
+  margin: 25px;
+}
+
+header {
+  color: greenyellow;
+  size: 25px;
+}
+
+footer {
+  color: greenyellow;
+  size: 25px;
+}
