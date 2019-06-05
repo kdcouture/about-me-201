@@ -46,7 +46,7 @@ var rArray = ['Good, good. I was worried I was talking to myself.', 'Well I gues
 // Below is a loop that will ask 5 questions with response for yes and for no.
 //
 for(var i = 0; i < 5; i++){
-  var resp = prompt(qArray[i]);
+  var resp = prompt(qArray[i] + '\nAnswers must be either yes or no (y/n)');
   console.log(qArray[i] + ' ' + resp);
   resp = resp.toUpperCase(); // Convert to all upper case.
   if(resp === correctArray[i] || resp === correctArray2[i]){
