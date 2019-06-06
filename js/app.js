@@ -40,81 +40,96 @@ console.log('The multiple possible answers are... ' + mAns);
 // Questions stored in array for condesing the code.
 var qArray = ['Is anybody out there?', 'Do I take the bus for my commute?', 'Do I not have a car?', 'Do I have more than 5 cats?', 'Am I stoked for this year?'];
 // Alert Responses stored here. 2(n) is the response for correct, 2(n)+1 is the response for incorrect.
-var rArray = ['Good, good. I was worried I was talking to myself.', 'Well I guess I\'m still going to ask the next questions...', 'It\'s great!... /s', 'Well I do and yea it kinda of is not so fun', 'Well I can see why you think that on acount of the bus and all.', 'Nice, it gets me from A to B.', 'Wack, I only have 4 cats and it is too many...', 'You got it!', 'Cool, a whole lot of cool stuff starting for me.', 'Geez I know I\'m monotone but I am stoked about it since work started.'];
+var rArray = ['Good, good. I was worried I was talking to myself.', 'Well I guess I\'m still going to ask the next questions...', 'It\'s great!... /s', 'Well I do and yea it kinda of is not so fun', 'Nice, it gets me from A to B.', 'Well I can see why you think that on acount of the bus and all.', 'You got it!', 'Wack, I only have 4 cats and it is too many...', 'Cool, a whole lot of cool stuff starting for me.', 'Geez I know I\'m monotone but I am stoked about it since work started.'];
 
 //
 // Below is a loop that will ask 5 questions with response for yes and for no.
 //
-for(var i = 0; i < 5; i++){
-  var resp = prompt(qArray[i] + '\nAnswers must be either yes or no (y/n)');
-  console.log(qArray[i] + ' ' + resp);
-  resp = resp.toUpperCase(); // Convert to all upper case.
-  if(resp === correctArray[i] || resp === correctArray2[i]){
-    alert(rArray[2*i]);
-    correctAns++;
+var firstFive = function () {
+  for(var i = 0; i < 5; i++){
+    var resp = prompt(qArray[i] + '\nAnswers must be either yes or no (y/n)');
+    console.log(qArray[i] + ' ' + resp);
+    resp = resp.toUpperCase(); // Convert to all upper case.
+    if(resp === correctArray[i] || resp === correctArray2[i]){
+      alert(rArray[2*i]);
+      correctAns++;
+    }
+    else {
+      alert(rArray[2*i+1]);
+    }
   }
-  else {
-    alert(rArray[2*i+1]);
-  }
-}
+};
 //
 // Ask a question with 4 chances.
 //
-guesses = 4;
-// Variable declartion for storge of users guess.
-var numGuess;
-while(guesses > 0) {
-  numGuess = parseInt(prompt('Guess what number I am thinking between 1 and 10.'));
-  console.log('Number guessed by user: ' + numGuess + ' The random number is: ' + rNum);
-  if(rNum < numGuess) {
-    alert('Try a smaller number.');
+
+var questionSix = function () {
+  guesses = 4; //Stage while loop
+  // Variable declartion for storge of users guess.
+  var numGuess;
+  while(guesses > 0) {
+    numGuess = parseInt(prompt('Guess what number I am thinking between 0 and 9.'));
+    console.log('Number guessed by user: ' + numGuess + ' The random number is: ' + rNum);
+    if(rNum < numGuess) {
+      alert('Try a smaller number.');
+    }
+    else if(rNum > numGuess) {
+      alert('Try a larger number.');
+    }
+    else if(rNum === numGuess) {
+      alert('Wow you got it!');
+      correctAns++;
+      console.log('They guessed the number correctly.');
+      break;
+    } else {
+      alert('Try a better input');
+      continue;
+    }
+    guesses--;
   }
-  else if(rNum > numGuess) {
-    alert('Try a larger number.');
-  }
-  else if(rNum === numGuess) {
-    alert('Wow you got it!');
-    correctAns++;
-    console.log('They guessed the number correctly.');
-    break;
-  }
-  guesses--;
-}
+};
 
 //
 // Ask a question with 6 chances to get one correct answer.
 //
-guesses = 5;
-// Storage for users guess.
-var catName;
-// Correct answer flag.
-var isNameFlag = false;
-do{
-  catName = prompt('Can you guess one of my (four) cat\'s name?').toUpperCase(); // Is stored in upper casing.
-  // Compair against each name.
-  for(var idx = 0; idx < mAns.length; idx++) {
-    console.log('Name Guessed is: ' + catName);
-    // If correct, break out of loop using flag.
-    if(catName === mAns[idx]) {
-      alert('Nice, you got one!');
-      correctAns++;
-      isNameFlag = true; // Raise flag
+
+var questionSeven = function () {
+  guesses = 5;
+  // Storage for users guess.
+  var catName;
+  // Correct answer flag.
+  var isNameFlag = false;
+  do{
+    catName = prompt('Can you guess one of my (four) cat\'s name?').toUpperCase(); // Is stored in upper casing.
+    // Compair against each name.
+    for(var idx = 0; idx < mAns.length; idx++) {
+      console.log('Name Guessed is: ' + catName);
+      // If correct, break out of loop using flag.
+      if(catName === mAns[idx]) {
+        alert('Nice, you got one!');
+        correctAns++;
+        isNameFlag = true; // Raise flag
+        break;
+      }
+    }
+    // Name not correct.
+    if(!isNameFlag){
+      alert('Nope! You have ' + guesses + ' remaining.');
+    }
+    // Name was correct, break out of loop.
+    else {
+      console.log('They got one right!');
+      alert('The correct options were... ' + mAns);
       break;
     }
-  }
-  // Name not correct.
-  if(!isNameFlag){
-    alert('Nope! You have ' + guesses + ' remaining.');
-  }
-  // Name was correct, break out of loop.
-  else {
-    console.log('They got one right!');
-    alert('The correct options were... ' + mAns);
-    break;
-  }
-  // Decrement guess count.
-  guesses--;
-} while (guesses >= 0);
+    // Decrement guess count.
+    guesses--;
+  } while (guesses >= 0);
+};
+
+firstFive();
+questionSix();
+questionSeven();
 
 console.log(correctAns + ' correct answers.');
 alert('Wow! ' + uname +' you got ' + correctAns + ' correct answers! out of 7 possible');
