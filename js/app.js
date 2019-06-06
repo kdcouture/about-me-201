@@ -64,7 +64,7 @@ guesses = 4;
 // Variable declartion for storge of users guess.
 var numGuess;
 while(guesses > 0) {
-  numGuess = prompt('Guess what number I am thinking between 1 and 10.');
+  numGuess = parseInt(prompt('Guess what number I am thinking between 1 and 10.'));
   console.log('Number guessed by user: ' + numGuess + ' The random number is: ' + rNum);
   if(rNum < numGuess) {
     alert('Try a smaller number.');
