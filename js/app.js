@@ -25,8 +25,8 @@ var rNum = Math.floor(Math.random()*10);
 console.log('The random number is... ' + rNum);
 
 // Correct responses stored in array, two arrays are used to account for two possible answers.
-var correctArray = ['Y','Y','Y','Y','Y'];
-var correctArray2 = ['YES','YES','YES','YES','YES'];
+var correctArray = ['Y','Y','N','N','Y'];
+var correctArray2 = ['YES','YES','NO','NO','YES'];
 console.log('Correct answers are... ' + correctArray);
 console.log('Other accepted answers are... ' + correctArray2);
 
@@ -38,9 +38,9 @@ console.log('The multiple possible answers are... ' + mAns);
 // Below are two parralel arrays that are used to decrease amount of code required.
 //
 // Questions stored in array for condesing the code.
-var qArray = ['Is anybody out there?', 'Do I take the bus for my commute?', 'Do I have a car?', 'Do I have at least 1 cat?', 'Am I stoked for this year?'];
-// Alert Responses stored here. 2(n) is the response for yes, 2(n)+1 is the response for no.
-var rArray = ['Good, good. I was worried I was talking to myself.', 'Well I guess I\'m still going to ask the next questions...', 'It\'s great!... /s', 'Well I do and yea it kinda of is not so fun', 'Nice, it gets me from A to B.', 'Well I can see why you think that on acount of the bus and all.', 'Sweet!', 'Wack', 'Cool, a whole lot of cool stuff starting for me.', 'Geez I know I\'m monotone but I am stoked about it since work started.']
+var qArray = ['Is anybody out there?', 'Do I take the bus for my commute?', 'Do I not have a car?', 'Do I have more than 5 cats?', 'Am I stoked for this year?'];
+// Alert Responses stored here. 2(n) is the response for correct, 2(n)+1 is the response for incorrect.
+var rArray = ['Good, good. I was worried I was talking to myself.', 'Well I guess I\'m still going to ask the next questions...', 'It\'s great!... /s', 'Well I do and yea it kinda of is not so fun', 'Well I can see why you think that on acount of the bus and all.', 'Nice, it gets me from A to B.', 'Wack, I only have 4 cats and it is too many...', 'You got it!', 'Cool, a whole lot of cool stuff starting for me.', 'Geez I know I\'m monotone but I am stoked about it since work started.'];
 
 //
 // Below is a loop that will ask 5 questions with response for yes and for no.
@@ -72,7 +72,7 @@ while(guesses > 0) {
   else if(rNum > numGuess) {
     alert('Try a larger number.');
   }
-  else if(rNum == numGuess) {
+  else if(rNum === numGuess) {
     alert('Wow you got it!');
     correctAns++;
     console.log('They guessed the number correctly.');
